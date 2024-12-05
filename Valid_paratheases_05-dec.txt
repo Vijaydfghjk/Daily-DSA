@@ -1,0 +1,46 @@
+// You can edit this code!
+// Click here and start typing.
+package main
+
+import "fmt"
+
+func Demo(s string) bool {
+
+	var store map[int32]int32 = make(map[int32]int32)
+
+	store[']'] = '['
+	store['}'] = '{'
+	store[')'] = '('
+
+	stack := []int32{}
+	for _, v := range s {
+
+		switch v {
+
+		case '[', '{', '(':
+
+			stack = append(stack, v)
+
+		case ']', ')', '}':
+
+			if stack[len(stack)-1] == store[v] {
+
+				stack = stack[:len(stack)-1]
+			}
+		}
+
+	}
+
+	if len(stack) == 0 {
+
+		return true
+	}
+	return false
+}
+func main() {
+
+	get := Demo("[]{}")
+
+	fmt.Println(get)
+
+}

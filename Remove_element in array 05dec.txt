@@ -1,0 +1,32 @@
+// You can edit this code!
+// Click here and start typing.
+package main
+
+import "fmt"
+
+func Remove(arr *[]int, f int) {
+	var check bool
+	for i := 0; i < len(*arr); i++ {
+
+		if (*arr)[i] == f {
+
+			*arr = append((*arr)[:i], (*arr)[i+1:]...)
+			check = true
+			break
+		}
+	}
+
+	if !check {
+
+		fmt.Println("Given number not exist")
+		return
+	}
+	fmt.Println(arr)
+}
+func main() {
+
+	arr := []int{100, 122, 344, 11}
+
+	Remove(&arr, 122)
+
+}
