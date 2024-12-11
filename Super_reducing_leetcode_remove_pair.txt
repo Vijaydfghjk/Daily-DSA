@@ -1,0 +1,27 @@
+package main
+
+import "fmt"
+
+func superReducedString(s string) string {
+	var index int = 1
+	for index < len(s) {
+		if s[index] == s[index-1] {
+			s = s[0:index-1] + s[index+1:]
+			if index != 1 {
+				index--
+			}
+		} else {
+			index++
+		}
+		if len(s) == 0 {
+			return "Empty String"
+		}
+	}
+	return s
+}
+
+func main() {
+
+	collect := superReducedString("abba")
+	fmt.Println(collect)
+}
