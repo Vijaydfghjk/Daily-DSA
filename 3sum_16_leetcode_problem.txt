@@ -1,0 +1,49 @@
+func threeSumClosest(nums []int, target int) int {
+
+
+     sort.Ints(nums)
+
+     close := nums[0]+nums[1]+nums[2]
+
+     if close == target{
+
+         return close
+     }
+
+        n :=len(nums)
+       for i:=0;i<n;i++{
+
+             left,right := i+1,n-1 
+           for left < right{
+
+                sum := nums[i] + nums[left] + nums[right]
+               
+                 if abs(sum-target) < abs(close-target){
+
+                      close = sum
+                 }
+
+                  if sum > target{
+
+                      right--
+                  }else if sum < target{
+
+                      left++
+                  }else{
+
+                    return sum
+                  }
+
+           }
+         
+       }
+ return close    
+}
+
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+
+}
