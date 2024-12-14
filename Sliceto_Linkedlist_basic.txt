@@ -1,0 +1,43 @@
+// You can edit this code!
+// Click here and start typing.
+package main
+
+import "fmt"
+
+type ListNode struct {
+	val  int
+	Next *ListNode
+}
+
+func add(arr []int) *ListNode {
+
+	head := &ListNode{val: arr[0]}
+
+	current := head
+
+	for _, v := range arr[1:] {
+
+		current.Next = &ListNode{val: v}
+
+		current = current.Next
+	}
+
+	return head
+}
+
+func Chealall(get *ListNode) {
+
+	for get != nil {
+
+		fmt.Printf("value: %v\n", get.val)
+		get = get.Next
+	}
+
+}
+
+func main() {
+
+	arr := []int{2, 3, 4, 5}
+	data := add(arr)
+	Chealall(data)
+}
