@@ -1,0 +1,11 @@
+func toLowerCase(s string) string {
+    str := ""
+	for _, v := range s {
+
+		t := unicode.ToLower(v)
+		str += string(t)
+	}
+
+	return str
+
+}
