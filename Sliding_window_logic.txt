@@ -1,0 +1,31 @@
+package main
+
+import "fmt"
+
+func maxSumSubarray(nums []int, k int) int {
+
+	maxsum, win := 0, 0
+
+	for i := 0; i < len(nums); i++ {
+
+		win += nums[i]
+
+		if i >= k-1 {
+
+			if win > maxsum {
+
+				maxsum = win
+			}
+			win -= nums[i-(k-1)]
+		}
+
+	}
+
+	return maxsum
+}
+func main() {
+
+	arr := []int{3, 1, 4, 5, 2, 0} // 11
+	get := maxSumSubarray(arr, 3)
+	fmt.Println(get)
+}
