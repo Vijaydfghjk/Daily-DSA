@@ -47,3 +47,10 @@ func abs(x int) int {
 	return x
 
 }
+
+
+
+
+
+abs(sum-target) < abs(close-target) - we assign the maxmimum value 
+
