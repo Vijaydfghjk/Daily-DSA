@@ -1,0 +1,82 @@
+
+Question simple 
+
+Given an unsorted integer array nums. Return the smallest positive integer that is not present in nums.
+
+4,1,3,5
+
+so add 0 
+
+4,1,3,5,0 and now len = 5
+
+where i = 0 len + 1 
+
+
+4,1,3,5,6 
+
+take 4 as index update negative number 
+
+4,1,3,5,-6
+
+take 1 as index update negative number
+
+4,-1,3,5,-6
+
+take 1 as index update negative number
+
+4,-1,3,-5,-6
+
+now count the positive number and return which is 2
+
+// You can edit this code!
+// Click here and start typing.
+package main
+
+import "fmt"
+
+func firstMissingPositive(nums []int) int {
+	nums = append(nums, 0)
+
+	n := len(nums)
+
+	for i, v := range nums {
+
+		if v <= 0 || v > n {
+
+			nums[i] = n + 1
+		}
+	}
+
+	for _, v := range nums {
+
+		if v < 0 {
+
+			v = v * -1
+		}
+
+		if v >= n {
+			continue
+		}
+
+		if nums[v] > 0 {
+
+			nums[v] = nums[v] * -1
+		}
+
+	}
+
+	for i := 1; i < n; i++ {
+
+		if nums[i] > 0 {
+			return i
+		}
+	}
+	return n
+}
+
+func main() {
+
+	nums := []int{4, 1, 3, 5} 
+	get := firstMissingPositive(nums)
+	fmt.Println(get)
+}
