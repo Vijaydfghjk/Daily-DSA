@@ -1,0 +1,49 @@
+package main
+
+import (
+	"fmt"
+	"sort"
+)
+
+func missingNumbers(arr []int32, brr []int32) []int32 {
+	temp := []int32{}
+	check1 := make(map[int32]int32)
+	check2 := make(map[int32]int32)
+
+	for i := 0; i < len(arr); i++ {
+
+		check1[arr[i]]++
+
+	}
+
+	for i := 0; i < len(brr); i++ {
+
+		check2[brr[i]]++
+
+	}
+
+	fmt.Println("check1", check1)
+	fmt.Println("check2", check2)
+
+	for i, _ := range check2 {
+
+		if check2[i] != check1[i] || check2[i] != check1[i] {
+			temp = append(temp, i)
+		}
+
+	}
+
+	sort.Slice(temp, func(i, j int) bool {
+
+		return temp[i] < temp[j]
+	})
+	return temp
+}
+
+func main() {
+
+	arr := []int32{11, 4, 11, 7, 13, 4, 12, 11, 10, 14}
+	brr := []int32{11, 4, 11, 7, 3, 7, 10, 13, 4, 8, 12, 11, 10, 14, 12}
+	get := missingNumbers(arr, brr)
+	fmt.Println(get)
+}

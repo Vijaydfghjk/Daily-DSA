@@ -1,0 +1,30 @@
+// You can edit this code!
+// Click here and start typing.
+package main
+
+import "fmt"
+
+func icecreamParlor(m int32, arr []int32) []int32 {
+
+	temp := []int32{}
+	for i := int32(0); i < int32(len(arr)-1); i++ {
+
+		for j := i + 1; j < int32(len(arr)); j++ {
+
+			if arr[i]+arr[j] == m {
+
+				temp = append(temp, i+1, j+1)
+			}
+
+		}
+	}
+	return temp
+}
+
+func main() {
+
+	m := int32(4)
+	costs := []int32{1, 4, 5, 3, 2}
+	get := icecreamParlor(m, costs)
+	fmt.Println(get)
+}
