@@ -1,0 +1,37 @@
+// You can edit this code!
+// Click here and start typing.
+package main
+
+import "fmt"
+
+func superReducedString(s string) string {
+
+	index := 1
+
+	for index < len(s) {
+
+		if s[index-1] == s[index] {
+
+			s = s[:index-1] + s[index+1:]
+
+			if index != 1 {
+
+				index--
+			}
+		} else {
+
+			index++
+		}
+
+	}
+	if len(s) == 0 {
+		return "Empty String"
+	}
+	return s
+}
+
+func main() {
+
+	collect := superReducedString("abba")
+	fmt.Println(collect)
+}
