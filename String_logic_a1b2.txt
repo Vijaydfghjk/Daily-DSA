@@ -1,0 +1,40 @@
+package main
+
+import (
+	"fmt"
+	"strconv"
+)
+
+func mystr(s string) string {
+
+	letter := ""
+
+	for j := 0; j < len(s); j++ {
+
+		temp := ""
+		if s[j] >= 'a' && s[j] <= 'z' {
+
+			letter = string(s[j])
+
+		} else if s[j] >= '1' && s[j] <= '9' {
+
+			temp = string(s[j])
+
+		}
+
+		val, _ := strconv.Atoi(temp)
+
+		for k := 0; k < val; k++ {
+
+			fmt.Printf("%v", letter)
+
+		}
+	}
+
+	return ""
+}
+func main() {
+
+	get := mystr("a3b4")
+	fmt.Println(get)
+}
