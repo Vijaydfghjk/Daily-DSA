@@ -1,0 +1,57 @@
+package main
+
+import "fmt"
+
+func Flatten(nested []interface{}) []interface{} {
+
+	flat := make([]interface{}, 0)
+	for _, i := range nested {
+
+		switch i.(type) {
+
+		case []interface{}:
+
+			falttensub := Flatten(i.([]interface{}))
+
+			flat = append(flat, falttensub...)
+		default:
+
+			flat = append(flat, i)
+		}
+
+	}
+	return flat
+}
+
+func main() {
+
+	gg := []interface{}{[]interface{}{1, 2, []interface{}{3}}, 4, 5}
+	value := Flatten(gg)
+	fmt.Println(value)
+}
+
+
+
+process 
+
+
+
+i will irate first [1,2,[3]], 4, 5
+
+first call [1,2,[3]]
+
+first call - 
+falttensub := Flatten(i.([]interface{})) // passed [1,2,[3]]
+
+
+here 1,2 will append into the default case
+
+
+second call
+         falttensub := Flatten(i.([]interface{}))// passed [3]
+
+   default case append 3
+
+
+aging will go to the firat call remain 4,5 will add in to the 
+default case 
