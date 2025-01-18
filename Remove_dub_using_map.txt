@@ -1,0 +1,31 @@
+package main
+
+import "fmt"
+
+func Remove_dublicate(arr []int) []int {
+
+	var dub map[int]bool = make(map[int]bool)
+	original := []int{}
+
+	for i := 0; i < len(arr); i++ {
+
+		dub[arr[i]] = true
+
+	}
+
+	for k, v := range dub {
+
+		if v == true {
+
+			original = append(original, k)
+		}
+	}
+	return original
+}
+
+func main() {
+
+	arr := []int{4, 2, 1, 4, 1}
+	get := Remove_dublicate(arr)
+	fmt.Println(get)
+}

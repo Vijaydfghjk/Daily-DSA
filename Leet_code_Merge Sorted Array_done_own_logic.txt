@@ -1,0 +1,31 @@
+88. Merge Sorted Array
+
+package main
+
+import (
+	"fmt"
+	"sort"
+)
+
+func Merge_Sorted_Array(nums1 []int, nums2 []int, m, n int) {
+
+	for i := 0; i < len(nums1); i++ {
+
+		if nums1[i] == 0 && n != 0 {
+
+			nums1[i] = nums2[n-1]
+			n--
+		}
+	}
+
+	sort.Ints(nums1)
+	fmt.Println(nums1)
+}
+
+func main() {
+
+	nums1 := []int{-1, 0, 0, 3, 3, 3, 0, 0, 0} // [-1,0,0,3,3,3,0,0,0]
+	nums2 := []int{1, 2, 2}                    // [1,2,2]
+
+	Merge_Sorted_Array(nums1, nums2, 6, 3)
+}

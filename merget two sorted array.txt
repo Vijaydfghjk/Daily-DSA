@@ -1,0 +1,28 @@
+package main
+
+import (
+	"fmt"
+	"sort"
+)
+
+func Merage(arr1 []int, arr2 []int) []int {
+
+	store := []int{}
+
+	//arr1 = append(arr1, arr2...)
+	store = append(store, arr1...)
+	store = append(store, arr2...)
+
+	sort.Ints(store)
+	return store
+
+}
+
+func main() {
+
+	arr1 := []int{1, 3, 5, 7, 9}
+	arr2 := []int{2, 4, 6, 8, 10}
+	get := Merage(arr1, arr2)
+
+	fmt.Println(get)
+}
