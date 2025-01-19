@@ -1,0 +1,55 @@
+217.Contains Dublicate
+
+Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+
+ 
+Input: nums = [1,2,3,1]
+
+
+Approach 1
+
+
+func containsDuplicate(nums []int) bool {
+    check_dub := make(map[int]int)
+
+	for _, v := range nums {
+
+		check_dub[v]++
+
+		val, _ := check_dub[v]
+
+		if val > 1 {
+
+			return true
+		}
+	}
+
+	return false
+}
+
+
+
+
+func containsDuplicate(nums []int) bool {
+
+	sort.Ints(nums)
+	for i := 1; i < len(nums); i++ {
+
+		if nums[i-1] == nums[i] {
+
+			return true
+		}
+
+	}
+	return false
+}
+
+func main() {
+
+	nums := []int{1, 2, 3, 1}
+	get := containsDuplicate(nums)
+	fmt.Println(get)
+}
+
+
+
