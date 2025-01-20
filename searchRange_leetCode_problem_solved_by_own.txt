@@ -1,0 +1,26 @@
+34. Find First and Last Position of Element in Sorted Array
+
+func searchRange(nums []int, target int) []int {
+    temp := []int{}
+
+	for i, v := range nums {
+
+		if v == target {
+
+			temp = append(temp, i)
+		}
+	}
+
+   if len(temp) == 1 {
+
+		temp = append(temp, temp[len(temp)-1])
+	}
+
+	if len(temp) > 0 {
+
+  temp = append(temp[:1], temp[len(temp)-1:]...)
+		return temp
+	}
+
+	return []int{-1, -1}
+}
