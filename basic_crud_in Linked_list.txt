@@ -1,0 +1,114 @@
+package main
+
+import "fmt"
+
+type Node struct {
+	data int
+	Next *Node
+}
+
+type mylist struct {
+	top *Node
+}
+
+func (a *mylist) insertatback(value int) {
+
+	if a.top == nil {
+		a.top = &Node{data: value, Next: nil}
+		return
+	}
+	temp := a.top
+
+	for temp.Next != nil {
+
+		temp = temp.Next
+	}
+	temp.Next = &Node{data: value, Next: nil}
+
+}
+
+func (a *mylist) insertfront(value int) {
+
+	a.top = &Node{data: value, Next: a.top}
+}
+func (a *mylist) update(find, replace int) {
+
+	current := a.top
+
+	for current != nil {
+
+		if current.data == find {
+
+			current.data = replace
+		}
+
+		current = current.Next
+	}
+
+}
+
+func (a *mylist) Addvalueaftervalue(afterval, value int) {
+
+	temp := a.top
+
+	for temp != nil {
+
+		if temp.data == afterval {
+			temp.Next = &Node{data: value, Next: temp.Next}
+
+		}
+
+		temp = temp.Next
+	}
+
+}
+
+func (a *mylist) Deletenode(value int) {
+
+	temp := a.top
+
+	if temp.data == value {
+
+		a.top = temp
+		return
+
+	}
+
+	for temp != nil {
+
+		if temp.Next != nil && temp.Next.data == value {
+
+			temp.Next = temp.Next.Next
+		}
+
+		temp = temp.Next
+	}
+
+}
+
+func (a *mylist) view() {
+
+	temp := a.top
+
+	for temp != nil {
+
+		fmt.Println(temp.data)
+
+		temp = temp.Next
+	}
+}
+
+func main() {
+
+	// n := &Node{data:2,Next:nil}
+
+	var vj mylist
+
+	vj.insertatback(3)
+	vj.insertatback(4)
+	vj.insertatback(6)
+	vj.insertfront(1)
+	vj.Addvalueaftervalue(4, 5)
+	vj.Deletenode(5)
+	vj.view()
+}
