@@ -1,0 +1,74 @@
+// You can edit this code!
+// Click here and start typing.
+package main
+
+import "fmt"
+
+func longestValidParentheses(s string) int {
+
+	stack := []int{-1}
+	maxlen := 0
+
+	for cur, val := range s {
+
+		if val == '(' {
+
+			stack = append(stack, cur)
+		} else {
+
+			stack = stack[:len(stack)-1]
+			if len(stack) == 0 {
+
+				stack = append(stack, cur)
+			} else {
+				maxlen = Max(maxlen, cur-stack[len(stack)-1])
+			}
+		}
+
+	}
+
+	return maxlen
+
+}
+
+func Max(a, b int) int {
+
+	if a > b {
+
+		return a
+	}
+	return b
+}
+
+func main() {
+
+	get := longestValidParentheses("))")
+	fmt.Println(get)
+
+}
+
+
+
+
+
+1.stack := []int{-1}   why this ?
+
+
+ if any value start with  ) menas stack updates 0  then if len(stack) == 0  will work
+
+
+2. stack = stack[:len(stack)-1]  why this ?
+
+
+    Actually we are removing the unwanted and always maintaining 0 value  
+
+3.  cur- stack[len(stack)-1] why this ?
+
+       )()())
+     go through the process 
+  
+
+ 
+
+
+ 
