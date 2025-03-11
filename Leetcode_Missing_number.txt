@@ -1,0 +1,19 @@
+func missingNumber(nums []int) int {
+    
+  temp := make(map[int]bool)
+	sort.Ints(nums)
+	for i := 0; i <= len(nums); i++ {
+
+		if i < len(nums) {
+			temp[nums[i]] = true
+		}
+		if !temp[i] {
+			
+			return i
+		}
+
+	}
+
+	return 0  
+
+}
