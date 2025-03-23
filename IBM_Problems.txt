@@ -1,0 +1,39 @@
+// You can edit this code!
+// Click here and start typing.
+
+
+You need to determine if a password is accepted or rejected based on how many users have already registered with the same password. If a password has been used more than k times, it should be rejected; otherwise, it should be accepted.
+
+passwords := []string{"password1", "password1", "password1"}
+k := 2
+
+package main
+
+import "fmt"
+
+func getRegistrationStatus(passwords []string, k int) []string {
+
+	pwd := make(map[string]int)
+	temp := []string{}
+	for _, v := range passwords {
+
+		pwd[v]++
+
+		if pwd[v] > k {
+
+			temp = append(temp, "REJECT")
+		} else {
+			temp = append(temp, "ACCEPT")
+		}
+
+	}
+
+	return temp
+}
+
+func main() {
+
+	passwords := []string{"password1", "password1", "password1"}
+	get := getRegistrationStatus(passwords, 2)
+	fmt.Println(get)
+}
