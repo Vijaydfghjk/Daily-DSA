@@ -1,0 +1,80 @@
+package main
+
+import "fmt"
+
+type data struct {
+id   int
+name string
+}
+
+type store struct {
+access map[int]data
+}
+
+func controller() *store {
+
+return &store{access: make(map[int]data)}
+}
+
+func (a *store) adding(t data) {
+
+a.access[t.id] = t
+}
+func (a *store) update(t data) {
+
+a.access[t.id] = t
+}
+
+func (a *store) remove(id int) {
+
+delete(a.access, id)
+}
+
+func (a *store) removedub() {
+
+temp := make(map[string]bool)
+
+for _, v := range a.access {
+
+if !temp[v.name] {
+
+temp[v.name] = true
+
+} else {
+
+delete(a.access, v.id)
+}
+
+}
+
+}
+func (a *store) viewall() {
+
+for _, v := range a.access {
+
+fmt.Println(v)
+}
+
+}
+
+func main() {
+
+t1 := data{id: 1, name: "r1"}
+t2 := data{id: 2, name: "r2"}
+t3 := data{id: 3, name: "r3"}
+t5 := data{id: 4, name: "r2"}
+t6 := data{id: 5, name: "r2"}
+vj := controller()
+
+vj.adding(t1)
+vj.adding(t2)
+vj.adding(t3)
+vj.adding(t5)
+vj.adding(t6)
+t4 := data{id: 3, name: "r5"}
+vj.update(t4)
+vj.remove(2)
+
+vj.removedub()
+vj.viewall()
+}
