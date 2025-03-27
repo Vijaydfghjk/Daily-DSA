@@ -1,0 +1,112 @@
+func singleNumber(nums []int) int {
+
+   
+
+     result := 0
+    for _,v := range nums{
+
+
+          result ^=v
+
+    }
+
+
+
+   return result
+
+}
+
+
+Initial Setup:
+We start with result = 0.
+
+First Iteration (num = 4):
+result = 0 (in binary: 0000)
+
+num = 4 (in binary: 0100)
+
+Now, we perform the XOR operation (result ^= num):
+
+sql
+Copy
+0000   (binary for result = 0)
+0100   (binary for num = 4)
+------
+0100   (result after XOR)
+So, after the first iteration:
+
+ini
+Copy
+result = 4
+Second Iteration (num = 1):
+result = 4 (in binary: 0100)
+
+num = 1 (in binary: 0001)
+
+Now, we perform the XOR operation:
+
+sql
+Copy
+0100   (binary for result = 4)
+0001   (binary for num = 1)
+------
+0101   (result after XOR)
+So, after the second iteration:
+
+ini
+Copy
+result = 5
+Third Iteration (num = 2):
+result = 5 (in binary: 0101)
+
+num = 2 (in binary: 0010)
+
+Now, we perform the XOR operation:
+
+sql
+Copy
+0101   (binary for result = 5)
+0010   (binary for num = 2)
+------
+0111   (result after XOR)
+So, after the third iteration:
+
+ini
+Copy
+result = 7
+Fourth Iteration (num = 1):
+result = 7 (in binary: 0111)
+
+num = 1 (in binary: 0001)
+
+Now, we perform the XOR operation:
+
+sql
+Copy
+0111   (binary for result = 7)
+0001   (binary for num = 1)
+------
+0110   (result after XOR)
+So, after the fourth iteration:
+
+ini
+Copy
+result = 6
+Fifth Iteration (num = 2):
+result = 6 (in binary: 0110)
+
+num = 2 (in binary: 0010)
+
+Now, we perform the XOR operation:
+
+sql
+Copy
+0110   (binary for result = 6)
+0010   (binary for num = 2)
+------
+0100   (result after XOR)
+So, after the fifth iteration:
+
+ini
+Copy
+result = 4
